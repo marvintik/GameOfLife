@@ -41,6 +41,12 @@ class GameLifeTest {
   }
 
   @Test
+  public void oscillatorFigure2(){
+    game.game("inputOscillator2.txt", "outputOscillator2.txt");
+    assertTrue(equalsFile("expectedOscillator2.txt", "outputOscillator2.txt"));
+  }
+
+  @Test
   public void gliderFigureEasy(){
     game.game("inputGliderEasy.txt", "outputGliderEasy.txt");
     assertTrue(equalsFile("expectedGliderEasy.txt", "outputGliderEasy.txt"));
