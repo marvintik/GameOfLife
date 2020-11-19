@@ -25,12 +25,11 @@ public class GameLife {
     for (int x = 0; x < rowSize; x++) {
       for (int y = 0; y < columnSize; y++) {
         int count = countNeighbors(x, y);
-        nextGeneration[x][y] = lifeGeneration[x][y];
         if (count == 3) {
           nextGeneration[x][y] = true;
         } else if ((count < 2) || (count > 3)) {
           nextGeneration[x][y] = false;
-        } else { nextGeneration[x][y] = nextGeneration[x][y];}
+        }  else { nextGeneration[x][y] = lifeGeneration[x][y];}
       }
     }
     for (int x = 0; x < rowSize; x++) {
@@ -42,20 +41,8 @@ public class GameLife {
     int count = 0;
     for (int dx = -1; dx < 2; dx++) {
       for (int dy = -1; dy < 2; dy++) {
-        int nX = x + dx;
-        int nY = y + dy;
-        if (nX < 0) {
-          nX =  rowSize - 1;
-        }
-        if (nY < 0) {
-          nY =  columnSize - 1;
-        }
-        if (nX > rowSize - 1) {
-          nX =  0;
-        }
-        if (nY > columnSize - 1) {
-          nY =  0;
-        }
+        int nX = (x + dx + rowSize) % rowSize ;
+        int nY = (y + dy + columnSize) % columnSize;
         count += (lifeGeneration[nX][nY]) ? 1 : 0;
       }
     }
